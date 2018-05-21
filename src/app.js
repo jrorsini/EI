@@ -21,7 +21,7 @@ const EmotionSelector = () => (
 				<option value="animated">Animated</option>
 				<option value="peppy">Peppy</option>
 			</optgroup>
-			<optgroup label="Pleasant / Positive">
+			<optgroup label="Pleasant or Positive">
 				<option value="happy">Happy</option>
 				<option value="delighted">Delighted</option>
 				<option value="glad">Glad</option>
