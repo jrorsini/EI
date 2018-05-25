@@ -2,14 +2,9 @@ import React from 'react';
 
 const AddEntry = props => (
 	<div>
-		<form
-			onSubmit={e => {
-				e.preventDefault();
-				console.log(e);
-			}}
-		>
-			<select>
-				<option value="" defaultValue selected disabled hidden>
+		<form onSubmit={props.handleAddEntry}>
+			<select name="emotion">
+				<option defaultValue value={false} selected disabled hidden>
 					What are you feeling right now?
 				</option>
 				<optgroup label="High Activation">
@@ -35,7 +30,11 @@ const AddEntry = props => (
 					<option value="satisfied">Satisfied</option>
 				</optgroup>
 			</select>
-			<input type="text" placeholder="What was the reason??" />
+			<input
+				name="trigger"
+				type="text"
+				placeholder="What did trigger that emotion??"
+			/>
 			<input type="submit" value="Add Entry" />
 		</form>
 	</div>
