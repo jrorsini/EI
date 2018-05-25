@@ -2,6 +2,7 @@ import React from 'react';
 
 const AddEntry = props => (
 	<div>
+		{props.errorMessage && <p>{props.errorMessage}</p>}
 		<form onSubmit={props.handleAddEntry}>
 			<select name="emotion">
 				<option defaultValue value={false} selected disabled hidden>

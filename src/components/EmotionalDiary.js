@@ -4,7 +4,9 @@ import moment from 'moment';
 
 export default class EmotionalDiary extends React.Component {
 	state = {
-		entry: []
+		entries: [],
+		triggers: [],
+		errorMessage: null
 	};
 	handleAddEntry = e => {
 		e.preventDefault();
@@ -12,14 +14,24 @@ export default class EmotionalDiary extends React.Component {
 		const emotion = e.target.elements.emotion.value;
 		const trigger = e.target.elements.trigger.value;
 
-		emotion && console.log("Your entry doesn't have any emotions");
-		!trigger && console.log("Your entry doesn't have any trigger");
+		emotion &&
+			this.setState(() => ({
+				errorMessage: "Your entry doesn't have any emotions"
+			}));
+		!trigger &&
+			this.setState(() => ({
+				errorMessage: "Your entry doesn't have any trigger"
+			}));
 
 		this.setState(prevState => ({
-			entry: prevState.entry.concat({
+			entries: prevState.entries.concat({
 				emotion,
 				trigger
-			})
+			}),
+			trigger:
+				prevState.trigger.indexOf(trigger) === -1
+					? prevState.trigger.concat(trigger)
+					: prevState.trigger
 		}));
 	};
 
@@ -27,7 +39,11 @@ export default class EmotionalDiary extends React.Component {
 		return (
 			<div>
 				<h1>Emotional Diary</h1>
-				<AddEntry handleAddEntry={this.handleAddEntry} />
+				<AddEntry
+					handleAddEntry={this.handleAddEntry}
+					errorMessage={this.state.errorMessage}
+					triggers={this.state.triggers}
+				/>
 			</div>
 		);
 	}
