@@ -3,7 +3,7 @@ import React from 'react';
 const AddEntry = props => (
 	<div className="container">
 		{props.errorMessage && <p>{props.errorMessage}</p>}
-		<form onSubmit={props.handleAddEntry}>
+		<form onSubmit={props.handleAddEntry} className="addEntry">
 			<select name="emotion">
 				<option defaultValue value={false} selected disabled hidden>
 					What are you feeling right now?

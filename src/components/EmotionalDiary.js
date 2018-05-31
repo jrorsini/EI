@@ -1,6 +1,8 @@
 import React from 'react';
 import AddEntry from './AddEntry';
 import Header from './Header';
+import EntryList from './EntryList';
+
 import moment from 'moment';
 
 export default class EmotionalDiary extends React.Component {
@@ -29,10 +31,10 @@ export default class EmotionalDiary extends React.Component {
 				emotion,
 				trigger
 			}),
-			trigger:
-				prevState.trigger.indexOf(trigger) === -1
-					? prevState.trigger.concat(trigger)
-					: prevState.trigger
+			triggers:
+				prevState.triggers.indexOf(trigger) === -1
+					? prevState.triggers.concat(trigger)
+					: prevState.triggers
 		}));
 	};
 
@@ -45,6 +47,7 @@ export default class EmotionalDiary extends React.Component {
 					errorMessage={this.state.errorMessage}
 					triggers={this.state.triggers}
 				/>
+				<EntryList />
 			</div>
 		);
 	}
