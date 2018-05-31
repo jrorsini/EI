@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AddEntry = props => (
-	<div>
+	<div className="container">
 		{props.errorMessage && <p>{props.errorMessage}</p>}
 		<form onSubmit={props.handleAddEntry}>
 			<select name="emotion">
@@ -36,7 +36,7 @@ const AddEntry = props => (
 				type="text"
 				placeholder="What did trigger that emotion??"
 			/>
-			<input type="submit" value="Add Entry" />
+			<input type="submit" className="button" value="Add Entry" />
 		</form>
 	</div>
 );
