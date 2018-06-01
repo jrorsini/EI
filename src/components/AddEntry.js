@@ -5,7 +5,7 @@ const AddEntry = props => (
 		{props.errorMessage && <p>{props.errorMessage}</p>}
 		<form onSubmit={props.handleAddEntry} className="addEntry">
 			<select name="emotion">
-				<option defaultValue value={false} selected disabled hidden>
+				<option defaultValue value={true} selected disabled hidden>
 					How are you feeling right now?
 				</option>
 				<optgroup label="High Activation">

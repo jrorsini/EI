@@ -1,4 +1,5 @@
 .addEntry {
+  margin-top: $l-size;
   display: flex;
   // justify-content: space-between;
 }
@@ -7,4 +8,7 @@
   flex-grow: 1;
   margin: 0 $s-size;
   text-indent: $s-size;
+  outline: none;
+  border: none;
+  border-radius: 2px;
 }

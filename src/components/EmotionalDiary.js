@@ -11,6 +11,19 @@ export default class EmotionalDiary extends React.Component {
 		triggers: [],
 		errorMessage: null
 	};
+
+	componentDidMount() {
+		const entries = localStorage.getItem('entries');
+		if (entries) {
+			this.setState(prevState => ({
+				entries: entries
+			}));
+		}
+	}
+	componentDidUpdate() {
+		localStorage.setItem('entries', this.state.entries);
+	}
+
 	handleAddEntry = e => {
 		e.preventDefault();
 		console.log(e.target.elements);
@@ -47,7 +60,7 @@ export default class EmotionalDiary extends React.Component {
 					errorMessage={this.state.errorMessage}
 					triggers={this.state.triggers}
 				/>
-				<EntryList />
+				<EntryList entries={this.state.entries} />
 			</div>
 		);
 	}
