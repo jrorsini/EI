@@ -1,3 +1,10 @@
 .addEntry {
-  
+  display: flex;
+  // justify-content: space-between;
+}
+
+.addEntry__input {
+  flex-grow: 1;
+  margin: 0 $s-size;
+  text-indent: $s-size;
 }

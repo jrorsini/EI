@@ -6,7 +6,7 @@ const AddEntry = props => (
 		<form onSubmit={props.handleAddEntry} className="addEntry">
 			<select name="emotion">
 				<option defaultValue value={false} selected disabled hidden>
-					What are you feeling right now?
+					How are you feeling right now?
 				</option>
 				<optgroup label="High Activation">
 					<option value="excited">Excited</option>
@@ -29,6 +29,20 @@ const AddEntry = props => (
 					<option value="joyful">Joyful</option>
 					<option value="hearty">Hearty</option>
 					<option value="satisfied">Satisfied</option>
+				</optgroup>
+				<optgroup label="Low Activation / Lack of stimulation - positive affect">
+					<option value="dazed">Nostalgic</option>
+					<option value="bored">Modest</option>
+					<option value="listless">Cheerful</option>
+					<option value="numb">Relaxed</option>
+					<option value="tired">Happy</option>
+					<option value="lethargic">Rested</option>
+					<option value="heavy">Calm</option>
+					<option value="distressed">Cheerful</option>
+					<option value="tired">Easy</option>
+					<option value="ashamed">Shy</option>
+					<option value="disappointed">Serious</option>
+					<option value="disappointed">Sleepy</option>
 				</optgroup>
 				<optgroup label="Low Activation / Lack of stimulation">
 					<option value="calm">Calm</option>
@@ -58,11 +72,26 @@ const AddEntry = props => (
 					<option value="deary">Deary</option>
 					<option value="downcast">Downcast</option>
 				</optgroup>
+				<optgroup label="Negative affect">
+					<option value="unhappy">Jealous</option>
+					<option value="depressed">Disgusted</option>
+					<option value="sad">Confused</option>
+					<option value="sour">Stressed</option>
+					<option value="deary">Angry</option>
+					<option value="downcast">Frightened</option>
+					<option value="downcast">Upset</option>
+					<option value="downcast">Jittery</option>
+					<option value="downcast">Concerned</option>
+					<option value="downcast">Contradictory</option>
+					<option value="downcast">Alarmed</option>
+					<option value="downcast">Furious</option>
+				</optgroup>
 			</select>
 			<input
 				name="trigger"
 				type="text"
-				placeholder="What did trigger that emotion??"
+				className="addEntry__input"
+				placeholder="What did trigger that feeling?"
 			/>
 			<input type="submit" className="button" value="Add Entry" />
 		</form>
