@@ -7,7 +7,10 @@ const EntryList = ({ entries }) => {
 			<ul className="entryList">
 				{entries.map((_entry, index) => (
 					<li className="entryList__item" key={index}>
-						{_entry.emotion} {_entry.trigger}
+						<p className="entryList__trigger">
+							<span className="entryList__feeling">{_entry.emotion}</span>
+							{_entry.trigger}
+						</p>
 					</li>
 				))}
 			</ul>
