@@ -30,6 +30,34 @@ const AddEntry = props => (
 					<option value="hearty">Hearty</option>
 					<option value="satisfied">Satisfied</option>
 				</optgroup>
+				<optgroup label="Low Activation / Lack of stimulation">
+					<option value="calm">Calm</option>
+					<option value="quiet">Quiet</option>
+					<option value="inactive">Inactive</option>
+					<option value="lazy">Lazy</option>
+					<option value="passive">Passive</option>
+				</optgroup>
+				<optgroup label="Low Activation / Lack of stimulation - negative affect">
+					<option value="dazed">Dazed</option>
+					<option value="bored">bored</option>
+					<option value="listless">Listless</option>
+					<option value="numb">Numb</option>
+					<option value="tired">Tired</option>
+					<option value="lethargic">Lethargic</option>
+					<option value="heavy">Heavy</option>
+					<option value="distressed">Distressed</option>
+					<option value="tired">Tired</option>
+					<option value="ashamed">Ashamed</option>
+					<option value="disappointed">Disappointed</option>
+				</optgroup>
+				<optgroup label="Unpleasant / negative">
+					<option value="unhappy">Unhappy</option>
+					<option value="depressed">Depressed</option>
+					<option value="sad">Sad</option>
+					<option value="sour">Sour</option>
+					<option value="deary">Deary</option>
+					<option value="downcast">Downcast</option>
+				</optgroup>
 			</select>
 			<input
 				name="trigger"
