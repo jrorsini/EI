@@ -3,8 +3,6 @@ import AddEntry from './AddEntry';
 import Header from './Header';
 import EntryList from './EntryList';
 
-import moment from 'moment';
-
 export default class EmotionalDiary extends React.Component {
 	state = {
 		entries: [],
@@ -13,7 +11,7 @@ export default class EmotionalDiary extends React.Component {
 	};
 
 	componentDidMount() {
-		const entries = localStorage.getItem('entries');
+		const entries = JSON.parse(localStorage.getItem('entries'));
 		if (entries) {
 			this.setState(prevState => ({
 				entries: entries
@@ -21,16 +19,15 @@ export default class EmotionalDiary extends React.Component {
 		}
 	}
 	componentDidUpdate() {
-		localStorage.setItem('entries', this.state.entries);
+		localStorage.setItem('entries', JSON.stringify(this.state.entries));
 	}
 
 	handleAddEntry = e => {
 		e.preventDefault();
-		console.log(e.target.elements);
 		const emotion = e.target.elements.emotion.value;
 		const trigger = e.target.elements.trigger.value;
 
-		emotion &&
+		!emotion &&
 			this.setState(() => ({
 				errorMessage: "Your entry doesn't have any emotions"
 			}));
