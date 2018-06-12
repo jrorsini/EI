@@ -1,6 +1,5 @@
 import React from 'react';
 import AddEntry from './AddEntry';
-import Header from './Header';
 import EntryList from './EntryList';
 
 export default class EmotionalDiary extends React.Component {
@@ -64,7 +63,6 @@ export default class EmotionalDiary extends React.Component {
 	render() {
 		return (
 			<div>
-				<Header />
 				<AddEntry
 					handleAddEntry={this.handleAddEntry}
 					errorMessage={this.state.errorMessage}
