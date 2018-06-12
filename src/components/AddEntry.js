@@ -1,28 +1,33 @@
 import React from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 const AddEntry = props => (
 	<div className="container">
 		{props.errorMessage && <p>{props.errorMessage}</p>}
 		<form onSubmit={props.handleAddEntry} className="addEntry">
 			<div className="addEntry__line">
-				<select name="activationLevel">
-					<option defaultValue value={true} selected disabled hidden>
-						Activation level
-					</option>
-					<option value="high">High</option>
-					<option value="normal">Normal</option>
-					<option value="low">Low</option>
-				</select>
-				<select name="AffectType">
-					<option defaultValue value={true} selected disabled hidden>
+				<Select
+					name="activationLevel"
+					placeholder={props.inputs.activation}
+					value={props.inputs.activation}
+					options={[
+						{ value: 'high', label: 'High' },
+						{ value: 'normal', label: 'Normal' },
+						{ value: 'low', label: 'Low' }
+					]}
+				/>
+
+				<select name="AffectType" onChange={() => {}}>
+					<option defaultValue value={''} selected disabled hidden>
 						Kind of affect
 					</option>
 					<option value="positive">Positive</option>
 					<option value="neutral">Neutral</option>
 					<option value="negative">Negative</option>
 				</select>
-				<select name="emotion">
-					<option defaultValue value={true} selected disabled hidden>
+				<select name="emotion" onChange={() => {}}>
+					<option defaultValue value={''} selected disabled hidden>
 						Feeling right now
 					</option>
 					<optgroup label="High Activation">

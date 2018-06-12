@@ -5,6 +5,11 @@ import EntryList from './EntryList';
 
 export default class EmotionalDiary extends React.Component {
 	state = {
+		inputs: {
+			activation: 'Activation level',
+			affect: 'Kind of affect',
+			emotion: 'Feeling right now'
+		},
 		entries: [],
 		triggers: [],
 		errorMessage: null
@@ -49,6 +54,13 @@ export default class EmotionalDiary extends React.Component {
 		}));
 	};
 
+	handleChange = selectedOption => {
+		this.setState({ selectedOption });
+		if (selectedOption) {
+			console.log(`Selected: ${selectedOption.label}`);
+		}
+	};
+
 	render() {
 		return (
 			<div>
@@ -56,7 +68,9 @@ export default class EmotionalDiary extends React.Component {
 				<AddEntry
 					handleAddEntry={this.handleAddEntry}
 					errorMessage={this.state.errorMessage}
+					handleChange={this.handleChange}
 					triggers={this.state.triggers}
+					inputs={this.state.inputs}
 				/>
 				<EntryList entries={this.state.entries} />
 			</div>

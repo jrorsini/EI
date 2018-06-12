@@ -13,12 +13,14 @@
   justify-content: space-between;
 }
 
-.addEntry__line select {
+.addEntry__line .Select {
   outline: none;
   border: none;
   margin: 0 5px;
   flex-grow: 1;
   width: 100%;
+  border-radius: 2px;
+  -webkit-appearance: none;
 }
 
 .addEntry__input {
