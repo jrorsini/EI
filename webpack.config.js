@@ -4,7 +4,8 @@ module.exports = {
 	entry: './src/app.js',
 	output: {
 		filename: 'bundle.js',
-		path: path.join(__dirname, 'public')
+		path: path.join(__dirname, 'public'),
+		publicPath: '/'
 	},
 	mode: 'development',
 	module: {
@@ -21,7 +22,8 @@ module.exports = {
 		]
 	},
 	devServer: {
-		contentBase: path.join(__dirname, 'public')
+		contentBase: path.join(__dirname, 'public'),
+		historyApiFallback: true
 	},
 	devtool: 'cheap-module-eval-source-map'
 };

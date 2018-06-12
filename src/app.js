@@ -12,9 +12,26 @@ const EmotionalDiaryRouter = () => (
 				<li>
 					<Link to="/">Home</Link>
 				</li>
+				<li>
+					<Link to="/list">List</Link>
+				</li>
 			</ul>
+			<Route exact path="/" component={Home} />
+			<Route path="/list" component={List} />
 		</div>
 	</Router>
 );
 
-ReactDOM.render(<EmotionalDiary />, document.getElementById('app'));
+const Home = () => (
+	<div>
+		<h2>Home</h2>
+	</div>
+);
+
+const List = () => (
+	<div>
+		<h2>About</h2>
+	</div>
+);
+
+ReactDOM.render(<EmotionalDiaryRouter />, document.getElementById('app'));
