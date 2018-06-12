@@ -44,11 +44,17 @@ class AddEntry extends React.Component {
 							value={affect}
 							onChange={this.handleAffectChange}
 							options={
-								activation && [
-									{ value: 'positive', label: 'Positive' },
-									{ value: 'neutral', label: 'Neutral' },
-									{ value: 'negative', label: 'Negative' }
-								]
+								activation &&
+								(activation.value === 'normal'
+									? [
+											{ value: 'positive', label: 'Positive' },
+											{ value: 'negative', label: 'Negative' }
+									  ]
+									: [
+											{ value: 'positive', label: 'Positive' },
+											{ value: 'neutral', label: 'Neutral' },
+											{ value: 'negative', label: 'Negative' }
+									  ])
 							}
 						/>
 						<Select
@@ -71,6 +77,7 @@ class AddEntry extends React.Component {
 							type="text"
 							className="addEntry__input"
 							placeholder="What did trigger that feeling?"
+							autocomplete="off"
 						/>
 					</div>
 					<div className="addEntry__line">
