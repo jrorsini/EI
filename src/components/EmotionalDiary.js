@@ -18,6 +18,7 @@ export default class EmotionalDiary extends React.Component {
 			}));
 		}
 	}
+
 	componentDidUpdate() {
 		localStorage.setItem('entries', JSON.stringify(this.state.entries));
 	}

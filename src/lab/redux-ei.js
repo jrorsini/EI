@@ -1,4 +1,6 @@
 import { createStore } from 'redux';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const demoState = {
 	lang: 'fr',
@@ -6,7 +8,7 @@ const demoState = {
 	text: {
 		fr: 'Bonjour',
 		en: 'Hello',
-		jp: 'Ç±ÇÒÇ…ÇøÇÕ'
+		jp: '„Åì„Çì„Å´„Å°„ÅØ'
 	}
 };
 
