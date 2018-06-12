@@ -2,6 +2,90 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
+class AddEntry extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+
+	state = {
+		inputs: {
+			activation: 'Activation level',
+			affect: 'Kind of affect',
+			emotion: 'Feeling right now'
+		}
+	};
+	handleActivationChange = selectedOption => {
+		this.setState({ selectedOption });
+		// selectedOption can be null when the `x` (close) button is clicked
+		if (selectedOption) {
+			console.log(`Selected: ${selectedOption.label}`);
+		}
+	};
+	handleAffectChange = selectedOption => {
+		this.setState({ selectedOption });
+		// selectedOption can be null when the `x` (close) button is clicked
+		if (selectedOption) {
+			console.log(`Selected: ${selectedOption.label}`);
+		}
+	};
+
+	render() {
+		const { activation, affect, emotion } = this.state.inputs;
+
+		return (
+			<div className="container">
+				{this.props.errorMessage && <p>{this.props.errorMessage}</p>}
+				<form onSubmit={this.props.handleAddEntry} className="addEntry">
+					<div className="addEntry__line">
+						<Select
+							name="activationLevel"
+							placeholder="Activation level"
+							value={activation}
+							onChange={this.handleActivationChange}
+							options={[
+								{ value: 'high', label: 'High' },
+								{ value: 'normal', label: 'Normal' },
+								{ value: 'low', label: 'Low' }
+							]}
+						/>
+						<Select
+							name="AffectType"
+							placeholder="Kind of affect"
+							value={affect}
+							onChange={this.handleAffectChange}
+							options={[
+								{ value: 'positive', label: 'Positive' },
+								{ value: 'neutral', label: 'Neutral' },
+								{ value: 'negative', label: 'Negative' }
+							]}
+						/>
+					</div>
+					<div className="addEntry__line">
+						<input
+							name="trigger"
+							type="text"
+							className="addEntry__input"
+							placeholder="What did trigger that feeling?"
+						/>
+					</div>
+					<div className="addEntry__line">
+						<input
+							type="submit"
+							className="button addEntry__button"
+							value="Add Entry"
+						/>
+					</div>
+				</form>
+			</div>
+		);
+	}
+}
+
+export default AddEntry;
+
+/*
+
+
 const AddEntry = props => (
 	<div className="container">
 		{props.errorMessage && <p>{props.errorMessage}</p>}
@@ -37,9 +121,6 @@ const AddEntry = props => (
 	</div>
 );
 
-export default AddEntry;
-
-/*
 <select name="AffectType" onChange={() => {}}>
 					<option defaultValue value={''} selected disabled hidden>
 						Kind of affect
