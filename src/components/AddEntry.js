@@ -14,19 +14,11 @@ class AddEntry extends React.Component {
 			emotion: 'Feeling right now'
 		}
 	};
-	handleActivationChange = selectedOption => {
-		this.setState({ selectedOption });
-		// selectedOption can be null when the `x` (close) button is clicked
-		if (selectedOption) {
-			console.log(`Selected: ${selectedOption.label}`);
-		}
+	handleActivationChange = activationLevelOption => {
+		this.setState({ activationLevelOption });
 	};
-	handleAffectChange = selectedOption => {
-		this.setState({ selectedOption });
-		// selectedOption can be null when the `x` (close) button is clicked
-		if (selectedOption) {
-			console.log(`Selected: ${selectedOption.label}`);
-		}
+	handleAffectChange = affectKindOption => {
+		this.setState({ affectKindOption });
 	};
 
 	render() {
