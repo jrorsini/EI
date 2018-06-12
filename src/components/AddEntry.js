@@ -8,21 +8,19 @@ class AddEntry extends React.Component {
 	}
 
 	state = {
-		inputs: {
-			activation: 'Activation level',
-			affect: 'Kind of affect',
-			emotion: 'Feeling right now'
-		}
+		activation: 'Activation level',
+		affect: 'Kind of affect',
+		emotion: 'Feeling right now'
 	};
-	handleActivationChange = activationLevelOption => {
-		this.setState({ activationLevelOption });
+	handleActivationChange = activation => {
+		this.setState({ activation });
 	};
-	handleAffectChange = affectKindOption => {
-		this.setState({ affectKindOption });
+	handleAffectChange = affect => {
+		this.setState({ affect });
 	};
 
 	render() {
-		const { activation, affect, emotion } = this.state.inputs;
+		const { activation, affect, emotion } = this.state;
 
 		return (
 			<div className="container">
