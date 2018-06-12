@@ -17,7 +17,7 @@ const EmotionalDiaryRouter = () => (
 );
 
 const List = () => (
-	<div>
+	<div className="container">
 		<h2>About</h2>
 	</div>
 );
