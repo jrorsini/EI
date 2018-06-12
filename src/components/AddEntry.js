@@ -17,8 +17,30 @@ const AddEntry = props => (
 						{ value: 'low', label: 'Low' }
 					]}
 				/>
+			</div>
+			<div className="addEntry__line">
+				<input
+					name="trigger"
+					type="text"
+					className="addEntry__input"
+					placeholder="What did trigger that feeling?"
+				/>
+			</div>
+			<div className="addEntry__line">
+				<input
+					type="submit"
+					className="button addEntry__button"
+					value="Add Entry"
+				/>
+			</div>
+		</form>
+	</div>
+);
 
-				<select name="AffectType" onChange={() => {}}>
+export default AddEntry;
+
+/*
+<select name="AffectType" onChange={() => {}}>
 					<option defaultValue value={''} selected disabled hidden>
 						Kind of affect
 					</option>
@@ -109,24 +131,5 @@ const AddEntry = props => (
 						<option value="downcast">Furious</option>
 					</optgroup>
 				</select>
-			</div>
-			<div className="addEntry__line">
-				<input
-					name="trigger"
-					type="text"
-					className="addEntry__input"
-					placeholder="What did trigger that feeling?"
-				/>
-			</div>
-			<div className="addEntry__line">
-				<input
-					type="submit"
-					className="button addEntry__button"
-					value="Add Entry"
-				/>
-			</div>
-		</form>
-	</div>
-);
 
-export default AddEntry;
+ */
