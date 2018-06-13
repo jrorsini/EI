@@ -2,76 +2,74 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-const high_neutral = [
-	{ value: 'unhappy', label: 'Unhappy' },
-	{ value: 'depressed', label: 'Depressed' },
-	{ value: 'sad', label: 'Sad' },
-	{ value: 'sour', label: 'Sour' },
-	{ value: 'deary', label: 'Deary' },
-	{ value: 'downcast', label: 'Downcast' }
-];
+const setOptionsFor = option => ({
+	value: option,
+	label: option.charAt(0).toUpperCase() + option.slice(1)
+});
+
+const setOptions = optionArr =>
+	optionArr.map(option => ({
+		value: option,
+		label: option.charAt(0).toUpperCase() + option.slice(1)
+	}));
 
 const setEmotionOptions = (activation, affect) => {
 	switch (activation) {
 		case 'high':
 			switch (affect) {
 				case 'positive':
-					return [
-						{ value: 'enthusiastic', label: 'Enthusiastic' },
-						{ value: 'cheerful', label: 'Cheerful' },
-						{ value: 'excited', label: 'Excited' },
-						{ value: 'euphoric', label: 'Euphoric' },
-						{ value: 'animated', label: 'Animated' },
-						{ value: 'peppy', label: 'Peppy' }
-					];
+					return setOptions([
+						'enthusiastic',
+						'cheerful',
+						'excited',
+						'euphoric',
+						'animated',
+						'peppy'
+					]);
 					break;
 				case 'neutral':
-					return [
-						{ value: 'excited', label: 'Excited' },
-						{ value: 'surprised', label: 'Surprised' },
-						{ value: 'rapt', label: 'Rapt' },
-						{ value: 'active', label: 'Active' }
-					];
+					return setOptions(['excited', 'surprised', 'rapt', 'active']);
 					break;
 				case 'negative':
-					return [
-						{ value: 'jealous', label: 'Jealous' },
-						{ value: 'disgusted', label: 'Disgusted' },
-						{ value: 'confused', label: 'Confused' },
-						{ value: 'stressed', label: 'Stressed' },
-						{ value: 'angry', label: 'Angry' },
-						{ value: 'frightened', label: 'Frightened' },
-						{ value: 'upset', label: 'Upset' },
-						{ value: 'jittery', label: 'Jittery' },
-						{ value: 'concerned', label: 'Concerned' },
-						{ value: 'contradictory', label: 'Contradictory' },
-						{ value: 'alarmed', label: 'Alarmed' },
-						{ value: 'furious', label: 'Furious' }
-					];
+					return;
+					setOptions([
+						'jealous',
+						'disgusted',
+						'confused',
+						'stressed',
+						'angry',
+						'frightened',
+						'upset',
+						'jittery',
+						'concerned',
+						'contradictory',
+						'alarmed',
+						'furious'
+					]);
 					break;
 			}
 			break;
 		case 'normal':
 			switch (affect) {
 				case 'positive':
-					return [
-						{ value: 'happy', label: 'Happy' },
-						{ value: 'delighted', label: 'Delighted' },
-						{ value: 'glad', label: 'Glad' },
-						{ value: 'joyful', label: 'Joyful' },
-						{ value: 'hearty', label: 'Hearty' },
-						{ value: 'satisfied', label: 'Satisfied' }
-					];
+					return setOptionsFor([
+						'happy',
+						'delighted',
+						'glad',
+						'joyful',
+						'hearty',
+						'satisfied'
+					]);
 					break;
 				case 'negative':
-					return [
-						{ value: 'unhappy', label: 'Unhappy' },
-						{ value: 'depressed', label: 'Depressed' },
-						{ value: 'sad', label: 'Sad' },
-						{ value: 'sour', label: 'Sour' },
-						{ value: 'deary', label: 'Deary' },
-						{ value: 'downcast', label: 'Downcast' }
-					];
+					return setOptionsFor([
+						'unhappy',
+						'depressed',
+						'sad',
+						'sour',
+						'deary',
+						'downcast'
+					]);
 					break;
 			}
 			break;
@@ -130,11 +128,7 @@ class AddEntry extends React.Component {
 							placeholder="Activation level"
 							value={activation}
 							onChange={this.handleActivationChange}
-							options={[
-								{ value: 'high', label: 'High' },
-								{ value: 'normal', label: 'Normal' },
-								{ value: 'low', label: 'Low' }
-							]}
+							options={setOptions(['high', 'normal', 'low'])}
 						/>
 						<Select
 							name="AffectType"
@@ -144,15 +138,8 @@ class AddEntry extends React.Component {
 							options={
 								activation &&
 								(activation.value === 'normal'
-									? [
-											{ value: 'positive', label: 'Positive' },
-											{ value: 'negative', label: 'Negative' }
-									  ]
-									: [
-											{ value: 'positive', label: 'Positive' },
-											{ value: 'neutral', label: 'Neutral' },
-											{ value: 'negative', label: 'Negative' }
-									  ])
+									? setOptions(['positive', 'negative'])
+									: setOptions(['positive', 'neutral', 'negative']))
 							}
 						/>
 						<Select
