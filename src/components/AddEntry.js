@@ -105,14 +105,13 @@ class AddEntry extends React.Component {
 		activation
 			? this.setState({ activation })
 			: this.setState({
-					activation: '',
+					activation,
 					affect: '',
-					emotion: '',
-					trigger: ''
+					emotion: ''
 			  });
 	};
 	handleAffectChange = affect => {
-		this.setState({ affect });
+		this.setState({ affect, emotion: '' });
 	};
 	handleEmotionChange = emotion => {
 		this.setState({ emotion });
