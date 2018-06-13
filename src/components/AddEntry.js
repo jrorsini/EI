@@ -3,39 +3,86 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 const high_neutral = [
-	{ value: 'excited', label: 'Excited' },
-	{ value: 'surprised', label: 'Surprised' },
-	{ value: 'rapt', label: 'Rapt' },
-	{ value: 'active', label: 'Active' }
+	{ value: 'jealous', label: 'Jealous' },
+	{ value: 'disgusted', label: 'Disgusted' },
+	{ value: 'confused', label: 'Confused' },
+	{ value: 'stressed', label: 'Stressed' },
+	{ value: 'angry', label: 'Angry' },
+	{ value: 'frightened', label: 'Frightened' },
+	{ value: 'upset', label: 'Upset' },
+	{ value: 'jittery', label: 'Jittery' },
+	{ value: 'concerned', label: 'Concerned' },
+	{ value: 'contradictory', label: 'Contradictory' },
+	{ value: 'alarmed', label: 'Alarmed' },
+	{ value: 'furious', label: 'Furious' }
 ];
 
-const high_positive = [
-	{ value: 'enthusiastic', label: 'Enthusiastic' },
-	{ value: 'cheerful', label: 'Cheerful' },
-	{ value: 'excited', label: 'Excited' },
-	{ value: 'euphoric', label: 'Euphoric' },
-	{ value: 'animated', label: 'Animated' },
-	{ value: 'peppy', label: 'Peppy' }
-];
-
-const normal_positive = [
-	{ value: 'happy', label: 'Happy' },
-	{ value: 'delighted', label: 'Delighted' },
-	{ value: 'glad', label: 'Glad' },
-	{ value: 'joyful', label: 'Joyful' },
-	{ value: 'hearty', label: 'Hearty' },
-	{ value: 'satisfied', label: 'Satisfied' }
-];
 const setEmotionOptions = (activation, affect) => {
 	switch (activation) {
 		case 'high':
+			switch (affect) {
+				case 'positive':
+					return [
+						{ value: 'enthusiastic', label: 'Enthusiastic' },
+						{ value: 'cheerful', label: 'Cheerful' },
+						{ value: 'excited', label: 'Excited' },
+						{ value: 'euphoric', label: 'Euphoric' },
+						{ value: 'animated', label: 'Animated' },
+						{ value: 'peppy', label: 'Peppy' }
+					];
+					break;
+				case 'neutral':
+					return [
+						{ value: 'excited', label: 'Excited' },
+						{ value: 'surprised', label: 'Surprised' },
+						{ value: 'rapt', label: 'Rapt' },
+						{ value: 'active', label: 'Active' }
+					];
+					break;
+				case 'negative':
+					return [
+						{ value: 'jealous', label: 'Jealous' },
+						{ value: 'disgusted', label: 'Disgusted' },
+						{ value: 'confused', label: 'Confused' },
+						{ value: 'stressed', label: 'Stressed' },
+						{ value: 'angry', label: 'Angry' },
+						{ value: 'frightened', label: 'Frightened' },
+						{ value: 'upset', label: 'Upset' },
+						{ value: 'jittery', label: 'Jittery' },
+						{ value: 'concerned', label: 'Concerned' },
+						{ value: 'contradictory', label: 'Contradictory' },
+						{ value: 'alarmed', label: 'Alarmed' },
+						{ value: 'furious', label: 'Furious' }
+					];
+					break;
+			}
+			return;
 			break;
 		case 'normal':
+			switch (affect) {
+				case 'positive':
+					return [
+						{ value: 'happy', label: 'Happy' },
+						{ value: 'delighted', label: 'Delighted' },
+						{ value: 'glad', label: 'Glad' },
+						{ value: 'joyful', label: 'Joyful' },
+						{ value: 'hearty', label: 'Hearty' },
+						{ value: 'satisfied', label: 'Satisfied' }
+					];
+					break;
+				case 'negative':
+					break;
+			}
 			break;
 		case 'low':
-			break;
-
-		default:
+			switch (affect) {
+				case 'positive':
+					break;
+				case 'neutral':
+					break;
+				case 'negative':
+					break;
+			}
 			break;
 	}
 };
