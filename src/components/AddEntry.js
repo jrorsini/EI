@@ -2,11 +2,6 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-const setOptionsFor = option => ({
-	value: option,
-	label: option.charAt(0).toUpperCase() + option.slice(1)
-});
-
 const setOptions = optionArr =>
 	optionArr.map(option => ({
 		value: option,
@@ -52,7 +47,7 @@ const setEmotionOptions = (activation, affect) => {
 		case 'normal':
 			switch (affect) {
 				case 'positive':
-					return setOptionsFor([
+					return setOptions([
 						'happy',
 						'delighted',
 						'glad',
@@ -62,7 +57,7 @@ const setEmotionOptions = (activation, affect) => {
 					]);
 					break;
 				case 'negative':
-					return setOptionsFor([
+					return setOptions([
 						'unhappy',
 						'depressed',
 						'sad',
