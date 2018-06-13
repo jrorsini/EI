@@ -2,6 +2,46 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
+const high_neutral = [
+	{ value: 'excited', label: 'Excited' },
+	{ value: 'surprised', label: 'Surprised' },
+	{ value: 'rapt', label: 'Rapt' },
+	{ value: 'active', label: 'Active' }
+];
+
+const high_positive = [
+	{ value: 'enthusiastic', label: 'Enthusiastic' },
+	{ value: 'cheerful', label: 'Cheerful' },
+	{ value: 'excited', label: 'Excited' },
+	{ value: 'euphoric', label: 'Euphoric' },
+	{ value: 'animated', label: 'Animated' },
+	{ value: 'peppy', label: 'Peppy' }
+];
+
+const normal_positive = [
+	{ value: 'happy', label: 'Happy' },
+	{ value: 'delighted', label: 'Delighted' },
+	{ value: 'glad', label: 'Glad' },
+	{ value: 'joyful', label: 'Joyful' },
+	{ value: 'hearty', label: 'Hearty' },
+	{ value: 'satisfied', label: 'Satisfied' }
+];
+const setEmotionOptions = (activation, affect) => {
+	switch (activation) {
+		case 'high':
+			break;
+		case 'normal':
+			break;
+		case 'low':
+			break;
+
+		default:
+			break;
+	}
+};
+
+const normal_neutral = [];
+
 class AddEntry extends React.Component {
 	constructor(props) {
 		super(props);
@@ -10,13 +50,17 @@ class AddEntry extends React.Component {
 	state = {
 		activation: '',
 		affect: '',
-		emotion: ''
+		emotion: '',
+		trigger: ''
 	};
 	handleActivationChange = activation => {
 		this.setState({ activation });
 	};
 	handleAffectChange = affect => {
 		this.setState({ affect });
+	};
+	handleEmotionChange = emotion => {
+		this.setState({ emotion });
 	};
 
 	render() {
@@ -61,14 +105,8 @@ class AddEntry extends React.Component {
 							name="emotion"
 							placeholder="Feeling right now"
 							value={emotion}
-							onChange={() => {}}
-							options={
-								activation && [
-									{ value: 'positive', label: 'Positive' },
-									{ value: 'neutral', label: 'Neutral' },
-									{ value: 'negative', label: 'Negative' }
-								]
-							}
+							onChange={this.handleEmotionChange}
+							options={activation && affect && high_neutral}
 						/>
 					</div>
 					<div className="addEntry__line">
@@ -83,7 +121,12 @@ class AddEntry extends React.Component {
 					<div className="addEntry__line">
 						<input
 							type="submit"
-							className="button addEntry__button"
+							className={
+								activation && affect
+									? 'button addEntry__button'
+									: 'button addEntry__button button--disabled'
+							}
+							disabled={activation && affect ? false : true}
 							value="Add Entry"
 						/>
 					</div>
