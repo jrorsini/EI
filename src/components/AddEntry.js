@@ -3,18 +3,12 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 const high_neutral = [
-	{ value: 'jealous', label: 'Jealous' },
-	{ value: 'disgusted', label: 'Disgusted' },
-	{ value: 'confused', label: 'Confused' },
-	{ value: 'stressed', label: 'Stressed' },
-	{ value: 'angry', label: 'Angry' },
-	{ value: 'frightened', label: 'Frightened' },
-	{ value: 'upset', label: 'Upset' },
-	{ value: 'jittery', label: 'Jittery' },
-	{ value: 'concerned', label: 'Concerned' },
-	{ value: 'contradictory', label: 'Contradictory' },
-	{ value: 'alarmed', label: 'Alarmed' },
-	{ value: 'furious', label: 'Furious' }
+	{ value: 'unhappy', label: 'Unhappy' },
+	{ value: 'depressed', label: 'Depressed' },
+	{ value: 'sad', label: 'Sad' },
+	{ value: 'sour', label: 'Sour' },
+	{ value: 'deary', label: 'Deary' },
+	{ value: 'downcast', label: 'Downcast' }
 ];
 
 const setEmotionOptions = (activation, affect) => {
@@ -56,7 +50,6 @@ const setEmotionOptions = (activation, affect) => {
 					];
 					break;
 			}
-			return;
 			break;
 		case 'normal':
 			switch (affect) {
@@ -71,6 +64,14 @@ const setEmotionOptions = (activation, affect) => {
 					];
 					break;
 				case 'negative':
+					return [
+						{ value: 'unhappy', label: 'Unhappy' },
+						{ value: 'depressed', label: 'Depressed' },
+						{ value: 'sad', label: 'Sad' },
+						{ value: 'sour', label: 'Sour' },
+						{ value: 'deary', label: 'Deary' },
+						{ value: 'downcast', label: 'Downcast' }
+					];
 					break;
 			}
 			break;
@@ -101,7 +102,14 @@ class AddEntry extends React.Component {
 		trigger: ''
 	};
 	handleActivationChange = activation => {
-		this.setState({ activation });
+		activation
+			? this.setState({ activation })
+			: this.setState({
+					activation: '',
+					affect: '',
+					emotion: '',
+					trigger: ''
+			  });
 	};
 	handleAffectChange = affect => {
 		this.setState({ affect });
@@ -153,7 +161,11 @@ class AddEntry extends React.Component {
 							placeholder="Feeling right now"
 							value={emotion}
 							onChange={this.handleEmotionChange}
-							options={activation && affect && high_neutral}
+							options={
+								activation &&
+								affect &&
+								setEmotionOptions(activation.value, affect.value)
+							}
 						/>
 					</div>
 					<div className="addEntry__line">
@@ -162,7 +174,7 @@ class AddEntry extends React.Component {
 							type="text"
 							className="addEntry__input"
 							placeholder="What did trigger that feeling?"
-							autocomplete="off"
+							autoComplete="off"
 						/>
 					</div>
 					<div className="addEntry__line">
