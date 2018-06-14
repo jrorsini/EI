@@ -3,7 +3,23 @@
   list-style: none;
 }
 
+.entryList__trigger {
+  color: #fff;
+  display: inline-block;
+}
+
 .entryList__feeling {
   margin-right: $s-size;
-  color: #fff;
+  color: darken(#fff, 20%);
+
+  width: 100%;
+  display: inline-block;
+  font-size: $l-size;
+}
+
+.entryList__item {
+  background: #464b5e;
+  padding: 0 $s-size;
+  margin-top: $s-size;
+  border-radius: 2px;
 }
