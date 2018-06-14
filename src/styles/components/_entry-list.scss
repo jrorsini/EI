@@ -6,6 +6,7 @@
 .entryList__trigger {
   color: #fff;
   display: inline-block;
+  font-size: $s-size;
 }
 
 .entryList__feeling {
@@ -14,6 +15,8 @@
   width: 100%;
   display: inline-block;
   font-size: $m-size;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
 }
 
 .entryList__item {

@@ -2,56 +2,14 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
+/**
+	Creates option's array based off the input string.
+ */
 const setOptions = optionString =>
 	optionString.split(' ').map(option => ({
 		value: option,
 		label: option.charAt(0).toUpperCase() + option.slice(1)
 	}));
-
-const setEmotionOptions = (activation, affect) => {
-	const high_neutral = 'excited surprised rapt active';
-	const normal_neutral = 'happy delighted glad joyful hearty satisfied';
-	const normal_positive = 'happy delighted glad joyful hearty satisfied';
-	const high_positive = 'enthusiastic cheerful excited euphoric animated peppy';
-	const high_negative =
-		'jealous disgusted confused stressed angry frightened upset jittery concerned contradictory alarmed furious';
-
-	switch (activation) {
-		case 'high':
-			switch (affect) {
-				case 'positive':
-					return setOptions(high_positive);
-					break;
-				case 'neutral':
-					return setOptions(high_neutral);
-					break;
-				case 'negative':
-					return setOptions(high_negative);
-					break;
-			}
-			break;
-		case 'normal':
-			switch (affect) {
-				case 'positive':
-					return setOptions(normal_positive);
-					break;
-				case 'negative':
-					return setOptions(normal_neutral);
-					break;
-			}
-			break;
-		case 'low':
-			switch (affect) {
-				case 'positive':
-					break;
-				case 'neutral':
-					break;
-				case 'negative':
-					break;
-			}
-			break;
-	}
-};
 
 const normal_neutral = [];
 
@@ -79,6 +37,55 @@ class AddEntry extends React.Component {
 	};
 	handleEmotionChange = emotion => {
 		this.setState({ emotion });
+	};
+
+	/**
+	Set emotion's options according to the two previous inputs.
+ */
+	setEmotionOptions = (activation, affect) => {
+		const high_neutral = 'excited surprised rapt active';
+		const normal_neutral = 'happy delighted glad joyful hearty satisfied';
+		const normal_positive = 'happy delighted glad joyful hearty satisfied';
+		const high_positive =
+			'enthusiastic cheerful excited euphoric animated peppy';
+		const high_negative =
+			'jealous disgusted confused stressed angry frightened upset jittery concerned contradictory alarmed furious';
+
+		switch (activation) {
+			case 'high':
+				switch (affect) {
+					case 'positive':
+						return setOptions(high_positive);
+						break;
+					case 'neutral':
+						return setOptions(high_neutral);
+						break;
+					case 'negative':
+						return setOptions(high_negative);
+						break;
+				}
+				break;
+			case 'normal':
+				switch (affect) {
+					case 'positive':
+						return setOptions(normal_positive);
+						break;
+					case 'negative':
+						return setOptions(normal_neutral);
+						break;
+				}
+				break;
+			case 'low':
+				switch (affect) {
+					case 'positive':
+						break;
+					case 'neutral':
+						break;
+					case 'negative':
+						break;
+				}
+				break;
+		}
 	};
 
 	render() {
@@ -116,7 +123,7 @@ class AddEntry extends React.Component {
 							options={
 								activation &&
 								affect &&
-								setEmotionOptions(activation.value, affect.value)
+								this.setEmotionOptions(activation.value, affect.value)
 							}
 						/>
 					</div>
