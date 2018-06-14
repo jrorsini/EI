@@ -2,8 +2,8 @@ import React from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-const setOptions = optionArr =>
-	optionArr.map(option => ({
+const setOptions = optionString =>
+	optionString.split(' ').map(option => ({
 		value: option,
 		label: option.charAt(0).toUpperCase() + option.slice(1)
 	}));
@@ -13,58 +13,27 @@ const setEmotionOptions = (activation, affect) => {
 		case 'high':
 			switch (affect) {
 				case 'positive':
-					return setOptions([
-						'enthusiastic',
-						'cheerful',
-						'excited',
-						'euphoric',
-						'animated',
-						'peppy'
-					]);
+					return setOptions(
+						'enthusiastic cheerful excited euphoric animated peppy'
+					);
 					break;
 				case 'neutral':
-					return setOptions(['excited', 'surprised', 'rapt', 'active']);
+					return setOptions('excited surprised rapt active');
 					break;
 				case 'negative':
-					return;
-					setOptions([
-						'jealous',
-						'disgusted',
-						'confused',
-						'stressed',
-						'angry',
-						'frightened',
-						'upset',
-						'jittery',
-						'concerned',
-						'contradictory',
-						'alarmed',
-						'furious'
-					]);
+					return setOptions(
+						'jealous disgusted confused stressed angry frightened upset jittery concerned contradictory alarmed furious'
+					);
 					break;
 			}
 			break;
 		case 'normal':
 			switch (affect) {
 				case 'positive':
-					return setOptions([
-						'happy',
-						'delighted',
-						'glad',
-						'joyful',
-						'hearty',
-						'satisfied'
-					]);
+					return setOptions('happy delighted glad joyful hearty satisfied');
 					break;
 				case 'negative':
-					return setOptions([
-						'unhappy',
-						'depressed',
-						'sad',
-						'sour',
-						'deary',
-						'downcast'
-					]);
+					return setOptions('unhappy depressed sad sour deary downcast');
 					break;
 			}
 			break;
@@ -123,7 +92,7 @@ class AddEntry extends React.Component {
 							placeholder="Activation level"
 							value={activation}
 							onChange={this.handleActivationChange}
-							options={setOptions(['high', 'normal', 'low'])}
+							options={setOptions('high normal low')}
 						/>
 						<Select
 							name="AffectType"
@@ -133,8 +102,8 @@ class AddEntry extends React.Component {
 							options={
 								activation &&
 								(activation.value === 'normal'
-									? setOptions(['positive', 'negative'])
-									: setOptions(['positive', 'neutral', 'negative']))
+									? setOptions('positive negative')
+									: setOptions('positive neutral negative'))
 							}
 						/>
 						<Select
