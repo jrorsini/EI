@@ -9,31 +9,34 @@ const setOptions = optionString =>
 	}));
 
 const setEmotionOptions = (activation, affect) => {
+	const high_neutral = 'excited surprised rapt active';
+	const normal_neutral = 'happy delighted glad joyful hearty satisfied';
+	const normal_positive = 'happy delighted glad joyful hearty satisfied';
+	const high_positive = 'enthusiastic cheerful excited euphoric animated peppy';
+	const high_negative =
+		'jealous disgusted confused stressed angry frightened upset jittery concerned contradictory alarmed furious';
+
 	switch (activation) {
 		case 'high':
 			switch (affect) {
 				case 'positive':
-					return setOptions(
-						'enthusiastic cheerful excited euphoric animated peppy'
-					);
+					return setOptions(high_positive);
 					break;
 				case 'neutral':
-					return setOptions('excited surprised rapt active');
+					return setOptions(high_neutral);
 					break;
 				case 'negative':
-					return setOptions(
-						'jealous disgusted confused stressed angry frightened upset jittery concerned contradictory alarmed furious'
-					);
+					return setOptions(high_negative);
 					break;
 			}
 			break;
 		case 'normal':
 			switch (affect) {
 				case 'positive':
-					return setOptions('happy delighted glad joyful hearty satisfied');
+					return setOptions(normal_positive);
 					break;
 				case 'negative':
-					return setOptions('unhappy depressed sad sour deary downcast');
+					return setOptions(normal_neutral);
 					break;
 			}
 			break;
