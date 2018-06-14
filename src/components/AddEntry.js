@@ -59,7 +59,6 @@ class AddEntry extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-
 	state = {
 		activation: '',
 		affect: '',
@@ -83,7 +82,7 @@ class AddEntry extends React.Component {
 	};
 
 	render() {
-		const { activation, affect, emotion } = this.state;
+		const { activation, affect, emotion, trigger } = this.state;
 
 		return (
 			<div className="container">
@@ -134,11 +133,11 @@ class AddEntry extends React.Component {
 						<input
 							type="submit"
 							className={
-								activation && affect
+								activation && affect && emotion
 									? 'button addEntry__button'
 									: 'button addEntry__button button--disabled'
 							}
-							disabled={activation && affect ? false : true}
+							disabled={activation && affect && emotion ? false : true}
 							value="Add Entry"
 						/>
 					</div>
