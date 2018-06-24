@@ -13,6 +13,7 @@
 
 .big-button:disabled {
 	opacity: 0.5;
+	pointer-events: none;
 }
 
 //Button
@@ -23,6 +24,10 @@
 	color: #fff;
 	font-weight: 500;
 	padding: $s-size;
+}
+
+.button--disabled {
+	opacity: 0.3;
 }
 
 // bem

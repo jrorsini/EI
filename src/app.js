@@ -18,7 +18,7 @@ const EmotionalDiaryRouter = () => (
 
 const List = () => (
 	<div className="container">
-		<h2>List</h2>
+		<h2>Entry List</h2>
 	</div>
 );
 

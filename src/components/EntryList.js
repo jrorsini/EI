@@ -1,7 +1,6 @@
 import React from 'react';
 
 const EntryList = ({ entries }) => {
-	console.log(entries);
 	return (
 		<div className="container">
 			<ul className="entryList">

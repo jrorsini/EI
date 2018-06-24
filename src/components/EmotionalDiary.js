@@ -2,6 +2,9 @@ import React from 'react';
 import AddEntry from './AddEntry';
 import EntryList from './EntryList';
 
+/**
+	Class representing the entry input Component named as EmotionalDiary
+ */
 export default class EmotionalDiary extends React.Component {
 	state = {
 		inputs: {
@@ -14,6 +17,9 @@ export default class EmotionalDiary extends React.Component {
 		errorMessage: null
 	};
 
+	/**
+		Set up data from Localstorage if there is any.
+	 */
 	componentDidMount() {
 		const entries = JSON.parse(localStorage.getItem('entries'));
 		if (entries) {
@@ -23,10 +29,17 @@ export default class EmotionalDiary extends React.Component {
 		}
 	}
 
+	/**
+		Update localStorage data when component updates.
+	 */
 	componentDidUpdate() {
 		localStorage.setItem('entries', JSON.stringify(this.state.entries));
 	}
 
+	/**
+		Handle input saving and updates UI DOM.
+		Also checks wether all informations and filled out
+	 */
 	handleAddEntry = e => {
 		e.preventDefault();
 		const emotion = e.target.elements.emotion.value;
@@ -53,20 +66,12 @@ export default class EmotionalDiary extends React.Component {
 		}));
 	};
 
-	handleChange = selectedOption => {
-		this.setState({ selectedOption });
-		if (selectedOption) {
-			console.log(`Selected: ${selectedOption.label}`);
-		}
-	};
-
 	render() {
 		return (
 			<div>
 				<AddEntry
 					handleAddEntry={this.handleAddEntry}
 					errorMessage={this.state.errorMessage}
-					handleChange={this.handleChange}
 					triggers={this.state.triggers}
 					inputs={this.state.inputs}
 				/>
