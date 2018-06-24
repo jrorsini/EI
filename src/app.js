@@ -5,6 +5,14 @@ import Header from './components/Header';
 import '../node_modules/normalize.css/normalize.css';
 import './styles/style.scss';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { createStore } from 'redux';
+
+const demoState = {};
+const store = createStore((state = {}, action) => {
+	return state;
+});
+
+console.log(store.getState());
 
 const EmotionalDiaryRouter = () => (
 	<Router>
