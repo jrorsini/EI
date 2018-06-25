@@ -7,8 +7,10 @@ import './styles/style.scss';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { createStore } from 'redux';
 
-const demoState = {};
-const store = createStore((state = {}, action) => {
+const demoState = {
+	entries: []
+};
+const store = createStore((state = demoState, action) => {
 	return state;
 });
 
