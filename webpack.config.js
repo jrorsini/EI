@@ -1,18 +1,18 @@
 const path = require('path');
 
 module.exports = {
-	entry: './src/app.js',
+	entry: './src/app.tsx',
 	output: {
 		filename: 'bundle.js',
-		path: path.join(__dirname, 'public'),
+		path: path.join(__dirname, 'dist'),
 		publicPath: '/'
 	},
 	mode: 'development',
 	module: {
 		rules: [
 			{
+				test: /\.tsx?$/,
 				loader: 'babel-loader',
-				test: /\.js$/,
 				exclude: /node_modules/
 			},
 			{
@@ -20,6 +20,9 @@ module.exports = {
 				use: ['style-loader', 'css-loader', 'sass-loader']
 			}
 		]
+	},
+	resolve: {
+		extensions: ['.tsx', '.ts', '.js']
 	},
 	devServer: {
 		contentBase: path.join(__dirname, 'public'),
